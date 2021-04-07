@@ -36,6 +36,7 @@ def print_hi(name):
     print("\n\n--- Effects on S&amp;P Noise Image with Probability 0.5 ---\n\n")
 
     # Applying filter on image with salt &amp; pepper noise
+    #В чем проблема что за sp_05
     sharpened_img = cv2.filter2D(sp_05, -1, kernel_sharpening)
     viewImage(sharpened_img)
 
