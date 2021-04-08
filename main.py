@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pylab
 from scipy.ndimage import maximum_filter, minimum_filter
+from matplotlib import pyplot as plt
 
 def viewImage(image):
     cv2.namedWindow('Display', cv2.WINDOW_NORMAL)
@@ -12,8 +13,9 @@ def viewImage(image):
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
+
 def print_hi(name):
-    a=2
+
     img = cv2.imread('pic5295.jpg')
 
     #viewImage(img)
@@ -41,6 +43,33 @@ def print_hi(name):
     #
     # sharpened_img = cv2.filter2D(img, -1, kernel_sharpening)
     # viewImage(sharpened_img)
+
+    kernel_gausian = np.array([[1/16, 1/8, 1/16],
+                                  [1/8, 1/4, 1/8],
+                                  [1/16, 1/8, 1/16]])
+    gaus_img=cv2.filter2D(img, -1, kernel_gausian, borderType=cv2.BORDER_CONSTANT)
+    viewImage(gaus_img)
+
+
+
+        #Гаусов блюр opencv
+    # blur = cv2.GaussianBlur(img, (5, 5), 0)
+    # viewImage(blur)
+
+            # какой то устранитель шума из ореncv
+    # dst = cv2.fastNlMeansDenoising(img, None, 10, 10, 7, 21)
+
+        # шо це за дич хз прост исправило задник
+    # se = cv2.getStructuringElement(cv2.MORPH_RECT, (8, 8))
+    # bg = cv2.morphologyEx(img, cv2.MORPH_DILATE, se)
+    # out_gray = cv2.divide(img, bg, scale=255)
+    # out_binary = cv2.threshold(out_gray, 0, 255, cv2.THRESH_OTSU)[1]
+    #
+    # cv2.imshow('binary', out_binary)
+    # cv2.imwrite('binary.png', out_binary)
+    #
+    # cv2.imshow('gray', out_gray)
+    # cv2.imwrite('gray.png', out_gray)
 
         # Фильтр средней точки
     # def midpoint(immg):
