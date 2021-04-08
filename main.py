@@ -1,4 +1,5 @@
-
+from skimage import io
+from scipy import ndimage as nd
 import pydicom
 import cv2
 import numpy as np
@@ -26,6 +27,16 @@ def print_hi(name):
     # Read image
     img = cv2.imread('pic5295.jpg', 0)
     viewImage(img)
+
+        # try to denoise with skimage
+    # gausian_img=nd.gaussian_filter(img, sigma=3)
+    # viewImage(gausian_img)
+    # mid_img=nd.median_filter(img, size=7)
+    # viewImage(mid_img)
+    # min_img=nd.minimum_filter(img, size=4)
+    # viewImage(min_img)
+
+
     # Perform binary thresholding on the image with T = 125
     # r, threshold = cv2.threshold(img, 125, 255, cv2.THRESH_BINARY)
     #viewImage(threshold)
@@ -44,11 +55,11 @@ def print_hi(name):
     # sharpened_img = cv2.filter2D(img, -1, kernel_sharpening)
     # viewImage(sharpened_img)
 
-    kernel_gausian = np.array([[1/16, 1/8, 1/16],
-                                  [1/8, 1/4, 1/8],
-                                  [1/16, 1/8, 1/16]])
-    gaus_img=cv2.filter2D(img, -1, kernel_gausian, borderType=cv2.BORDER_CONSTANT)
-    viewImage(gaus_img)
+    # kernel_gausian = np.array([[1/16, 1/8, 1/16],
+    #                               [1/8, 1/4, 1/8],
+    #                               [1/16, 1/8, 1/16]])
+    # gaus_img=cv2.filter2D(img, -1, kernel_gausian, borderType=cv2.BORDER_CONSTANT)
+    # viewImage(gaus_img)
 
 
 
